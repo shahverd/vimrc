@@ -1,4 +1,3 @@
-"
 " My vim/neovim configuration
 
 set number
