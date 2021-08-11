@@ -1,3 +1,4 @@
+"
 " My vim/neovim configuration
 
 set number
@@ -9,7 +10,7 @@ set noarabicshape "leave arabic shapes to terminal to IDE
 set scrolloff=300 " To make cursor stays in the middle of the screen
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
-colorscheme delek
+colorscheme desert
 
 
 " Tip: 
