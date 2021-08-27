@@ -6,7 +6,7 @@ set hlsearch incsearch " Highlight the searched string, while typing.
 set nobackup noswapfile
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set noarabicshape "leave arabic shapes to terminal to IDE
-set scrolloff=300 " To make cursor stays in the middle of the screen
+"set scrolloff=300 " To make cursor stays in the middle of the screen
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
 colorscheme desert
@@ -19,6 +19,8 @@ colorscheme desert
 "   it will be like '<,>'s/green/red/g
 "
 " Config path:
+"       /etc/xdg/nvim/init.vim
+"       or locally with:
 "       ~/.config/nvim/init.vim 
 " Quick command to link nvim & vim config files:
-"       ln -s ~/.vimrc ~/.config/nvim/init.vim
+"       ln -s ~/.vimrc /etc/xdg/nvim/init.vim
