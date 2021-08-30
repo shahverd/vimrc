@@ -19,6 +19,10 @@ set hidden " to be able to change buffers without saving them
 colorscheme blue
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
+if exists("UpdateConfigs")
+    finish
+endif
+
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
@@ -31,6 +35,8 @@ function! UpdateConfigs()
         let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
         call system(b:cmd)
 
+        exec "source " . b:scriptPath . 'init.vim'
+
     else
         " Path for vim's config script
         let b:scriptPath = $HOME . '/.vim/'
@@ -39,6 +45,7 @@ function! UpdateConfigs()
         let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
         call system(b:cmd)
 
+        exec "source " . b:scriptPath . 'vimrc'
     endif
     
     
