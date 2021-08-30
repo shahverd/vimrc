@@ -16,7 +16,7 @@ set noarabicshape "leave arabic shapes to terminal to IDE
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
 set hidden " to be able to change buffers without saving them
-colorscheme desert
+colorscheme blue
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
