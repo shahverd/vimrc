@@ -37,7 +37,7 @@ function! UpdateConfigs()
     endif
 endfunction
 
-command UpdateConfigs :call UpdateConfig()
+command! UpdateConfigs :call UpdateConfig()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -57,5 +57,4 @@ command UpdateConfigs :call UpdateConfig()
 "
 " But: In the end you can easily pull and use these configs by
 "
-"       :source https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim
-"       :UpdateConfig
+"       :source https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim | UpdateConfigs
