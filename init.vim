@@ -31,7 +31,7 @@ let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'
 function! UpdateConfig()
     if has('nvim')
 
-        let b:scriptPath = $HOME . '/.config/'
+        let b:scriptPath = $HOME . '/.config/nvim/'
         call system('mkdir -p '. b:scriptPath)
 
         let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
