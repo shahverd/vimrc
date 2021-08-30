@@ -37,7 +37,7 @@ function! UpdateConfigs()
     endif
 endfunction
 
-command! UpdateConfigs :call UpdateConfig()
+command! UpdateConfigs :call UpdateConfigs()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
