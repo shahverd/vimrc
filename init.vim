@@ -29,9 +29,21 @@ colorscheme desert
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'
 
 function! UpdateConfig()
-    let b:cmd = "curl " . b:path . " > " . $HOME . '/.config/nvim/init.vim'
-    call system(b:cmd)
+    if has('nvim')
+
+        let b:scriptPath = $HOME . '/.config/'
+        call system('mkdir -p '. b:scriptPath)
+
+        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
+        call system(b:cmd)
+    else
+        let b:scriptPath = $HOME . '/.vim/'
+        call system('mkdir -p '. b:scriptPath)
+
+        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
+        call system(b:cmd)
+
+    endif
 endfunction
 
 command UC :call UpdateConfig()
-
