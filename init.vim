@@ -4,6 +4,8 @@
 "   And then each time to update the configs run
 "     :UpdateConfigs
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set number
 set nowrap
 set hlsearch incsearch " Highlight the searched string, while typing.
@@ -13,8 +15,8 @@ set noarabicshape "leave arabic shapes to terminal to IDE
 "set scrolloff=300 " To make cursor stays in the middle of the screen
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
+set hidden " to be able to change buffers without saving them
 colorscheme desert
-
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
