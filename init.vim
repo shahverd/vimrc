@@ -19,9 +19,6 @@ set hidden " to be able to change buffers without saving them
 colorscheme blue
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
-if exists("UpdateConfigs")
-    finish
-endif
 
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
