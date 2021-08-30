@@ -24,3 +24,14 @@ colorscheme desert
 "       ~/.config/nvim/init.vim 
 " Quick command to link nvim & vim config files:
 "       ln -s ~/.vimrc /etc/xdg/nvim/init.vim
+
+" UPDATEING ....
+let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'
+
+function! UpdateConfig()
+    let b:cmd = "curl " . b:path . " > " . $HOME . '/.config/init.vim'
+    call system(b:cmd)
+endfunction
+
+command UC :call UpdateConfig()
+
