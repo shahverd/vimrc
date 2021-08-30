@@ -12,7 +12,37 @@ set mouse=a
 colorscheme desert
 
 
-" Tip: 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UPDATEING ....
+
+"Path to current script on my github
+let b:path = 'https://bit.ly/2V1DX2A'  
+
+function! UpdateConfigs()
+    if has('nvim')
+
+        " Path for nvim's config script
+        let b:scriptPath = $HOME . '/.config/nvim/'
+        call system('mkdir -p '. b:scriptPath)
+
+        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
+        call system(b:cmd)
+    else
+        " Path for vim's config script
+        let b:scriptPath = $HOME . '/.vim/'
+        call system('mkdir -p '. b:scriptPath)
+
+        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
+        call system(b:cmd)
+
+    endif
+endfunction
+
+command UpdateConfigs :call UpdateConfig()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Tips: 
 "   To replace text in a visually selected area,
 "   while text is selected press ":"
 "   then s/gree/red/g
@@ -24,26 +54,9 @@ colorscheme desert
 "       ~/.config/nvim/init.vim 
 " Quick command to link nvim & vim config files:
 "       ln -s ~/.vimrc /etc/xdg/nvim/init.vim
-
-" UPDATEING ....
-let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'
-
-function! UpdateConfig()
-    if has('nvim')
-
-        let b:scriptPath = $HOME . '/.config/nvim/'
-        call system('mkdir -p '. b:scriptPath)
-
-        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
-        call system(b:cmd)
-    else
-        let b:scriptPath = $HOME . '/.vim/'
-        call system('mkdir -p '. b:scriptPath)
-
-        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
-        call system(b:cmd)
-
-    endif
-endfunction
-
-command UC :call UpdateConfig()
+" 
+"
+" But: In the end you can easily pull and use these configs by
+"
+"       :source https://bit.ly/2V1DX2A
+"       :UpdateConfig
