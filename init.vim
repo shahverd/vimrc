@@ -39,6 +39,9 @@ function! UpdateConfigs()
         call system(b:cmd)
 
     endif
+    
+    source $VIM
+    
 endfunction
 
 command! UpdateConfigs :call UpdateConfigs()
