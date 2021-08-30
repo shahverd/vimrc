@@ -1,4 +1,8 @@
-" My vim/neovim configuration
+" Installation: You can overrode your own configs by
+"     :source https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim | UpdateConfigs
+"
+"   And then each time to update the configs run
+"     :UpdateConfigs
 
 set number
 set nowrap
@@ -12,9 +16,7 @@ set mouse=a
 colorscheme desert
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UPDATEING ....
-
+"""""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
@@ -38,23 +40,13 @@ function! UpdateConfigs()
 endfunction
 
 command! UpdateConfigs :call UpdateConfigs()
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tips: 
-"   To replace text in a visually selected area,
-"   while text is selected press ":"
-"   then s/gree/red/g
-"   it will be like '<,>'s/green/red/g
 "
-" Config path:
+"    Config path:
 "       /etc/xdg/nvim/init.vim
 "       or locally with:
 "       ~/.config/nvim/init.vim 
-" Quick command to link nvim & vim config files:
+"    Quick command to link nvim & vim config files:
 "       ln -s ~/.vimrc /etc/xdg/nvim/init.vim
-" 
-"
-" But: In the end you can easily pull and use these configs by
-"
-"       :source https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim | UpdateConfigs
