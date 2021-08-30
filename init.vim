@@ -30,6 +30,8 @@ function! UpdateConfigs()
 
         let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
         call system(b:cmd)
+
+        source b:scriptPath.'init.vim'
     else
         " Path for vim's config script
         let b:scriptPath = $HOME . '/.vim/'
@@ -38,9 +40,9 @@ function! UpdateConfigs()
         let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
         call system(b:cmd)
 
+        source b:scriptPath.'vimrc'
     endif
     
-    source $VIM
     
 endfunction
 
