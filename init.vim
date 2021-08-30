@@ -15,8 +15,7 @@ colorscheme desert
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UPDATEING ....
 
-"Path to current script on my github
-let b:path = 'https://bit.ly/2V1DX2A'  
+let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
     if has('nvim')
@@ -58,5 +57,5 @@ command UpdateConfigs :call UpdateConfig()
 "
 " But: In the end you can easily pull and use these configs by
 "
-"       :source https://bit.ly/2V1DX2A
+"       :source https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim
 "       :UpdateConfig
