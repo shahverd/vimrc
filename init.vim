@@ -45,7 +45,7 @@ function! UpdateConfigs()
         "exec "source " . b:scriptPath . 'vimrc'
     endif
     
-    
+    echo "Done updating. Restart the editor for changes to take effect."
 endfunction
 
 command! UpdateConfigs :call UpdateConfigs()
