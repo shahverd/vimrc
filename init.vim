@@ -16,7 +16,7 @@ set noarabicshape "leave arabic shapes to terminal to IDE
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
 set hidden " to be able to change buffers without saving them
-colorscheme default
+colorscheme blue
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 
