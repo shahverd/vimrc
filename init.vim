@@ -18,6 +18,10 @@ set mouse=a
 set hidden " to be able to change buffers without saving them
 colorscheme peachpuff
 
+"For some systems these are disabled by default:
+syntax on
+filetype on
+
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 
 let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
