@@ -24,7 +24,7 @@ filetype on
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 
-let b:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
+let g:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
     if has('nvim')
@@ -33,7 +33,7 @@ function! UpdateConfigs()
         let b:scriptPath = $HOME . '/.config/nvim/'
         call system('mkdir -p '. b:scriptPath)
 
-        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'init.vim'
+        let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'init.vim'
         call system(b:cmd)
 
         "exec "source " . b:scriptPath . 'init.vim'
@@ -43,7 +43,7 @@ function! UpdateConfigs()
         let b:scriptPath = $HOME . '/.vim/'
         call system('mkdir -p '. b:scriptPath)
 
-        let b:cmd = "curl " . b:path . " > " . b:scriptPath . 'vimrc'
+        let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'vimrc'
         call system(b:cmd)
 
         "exec "source " . b:scriptPath . 'vimrc'
