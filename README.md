@@ -7,4 +7,4 @@ And then als each time you can update the configs by:
 
     :UpdateConfigs
 
-Remember that these configurations depend on `curl` to automatically install everything. 
+*Remember* that these configurations depend on `curl` to automatically install everything. 
