@@ -33,7 +33,7 @@ function! UpdateConfigs()
     if has('win32')
 
         if has('nvim')
-            b:scriptPath = '%userprofile%\AppData\Local\nvim\'   
+            b:scriptPath =  $HOME . '\AppData\Local\nvim\'   
             b:fileName = 'init.vim'
         else
             b:scriptPath = $HOME . '/vimfiles/'
