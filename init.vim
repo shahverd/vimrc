@@ -27,27 +27,32 @@ filetype on
 let g:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
-    if has('nvim')
+    let b:scriptPath = ''
+    let b:fileName = ''
 
-        " Path for nvim's config script
-        let b:scriptPath = $HOME . '/.config/nvim/'
-        call system('mkdir -p '. b:scriptPath)
+    if has('win32')
 
-        let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'init.vim'
-        call system(b:cmd)
-
-        "exec "source " . b:scriptPath . 'init.vim'
+        if has('nvim')
+            b:scriptPath = '%userprofile%\AppData\Local\nvim\'   
+            b:fileName = 'init.vim'
+        else
+            b:scriptPath = $HOME . '/vimfiles/'
+            b:fileName = 'vimrc'
+        endif
 
     else
-        " Path for vim's config script
-        let b:scriptPath = $HOME . '/.vim/'
-        call system('mkdir -p '. b:scriptPath)
-
-        let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'vimrc'
-        call system(b:cmd)
-
-        "exec "source " . b:scriptPath . 'vimrc'
+        if has('nvim')
+            b:scriptPath = $HOME . '/.config/nvim/'    
+            b:fileName = 'init.vim'
+        else
+            b:scriptPath = $HOME . '/.vim/'
+            b:fileName = 'vimrc'
+        endif
     endif
+
+    call system('mkdir -p '. b:scriptPath)
+    let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'init.vim'
+    call system(b:cmd)
     
     echo "Done updating. Restart the editor for changes to take effect."
 endfunction
