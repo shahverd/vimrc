@@ -27,26 +27,24 @@ filetype on
 let g:path = 'https://raw.githubusercontent.com/shahverd/vimrc/main/init.vim'  
 
 function! UpdateConfigs()
-    let b:scriptPath = ''
-    let b:fileName = ''
 
     if has('win32')
 
         if has('nvim')
-            b:scriptPath =  $HOME . '/AppData/Local/nvim/'   
-            b:fileName = 'init.vim'
+            let b:scriptPath =  $HOME . '/AppData/Local/nvim/'   
+            let b:fileName = 'init.vim'
         else
-            b:scriptPath = $HOME . '/vimfiles/'
-            b:fileName = 'vimrc'
+            let b:scriptPath = $HOME . '/vimfiles/'
+            let b:fileName = 'vimrc'
         endif
 
     else
         if has('nvim')
-            b:scriptPath = $HOME . '/.config/nvim/'    
-            b:fileName = 'init.vim'
+            let b:scriptPath = $HOME . '/.config/nvim/'    
+            let b:fileName = 'init.vim'
         else
-            b:scriptPath = $HOME . '/.vim/'
-            b:fileName = 'vimrc'
+            let b:scriptPath = $HOME . '/.vim/'
+            let b:fileName = 'vimrc'
         endif
     endif
 
