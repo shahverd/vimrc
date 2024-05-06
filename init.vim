@@ -33,8 +33,8 @@ if has('nvim')
 else
     let b:sessionPath = '~/vim_session'
 endif
-map <F2> :mksession! b:sessionPath <cr> " Quick write session with F2
-map <F3> :source b:sessionPath <cr>     " And load session with F3
+map <F2> :mksession! b:sessionPath . '<cr>' " Quick write session with F2
+map <F3> :source b:sessionPath . '<cr>'     " And load session with F3
 
 function! RestoreSession()
     if filereadable(expand(b:sessionPath))
