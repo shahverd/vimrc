@@ -49,7 +49,7 @@ function! UpdateConfigs()
     endif
 
     call system('mkdir -p '. b:scriptPath)
-    let b:cmd = "curl " . g:path . " > " . b:scriptPath . 'init.vim'
+    let b:cmd = "curl " . g:path . " > " . b:scriptPath . b:fileName
     call system(b:cmd)
     
     echo "Done updating. Restart the editor for changes to take effect."
