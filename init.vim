@@ -56,13 +56,3 @@ function! UpdateConfigs()
 endfunction
 
 command! UpdateConfigs :call UpdateConfigs()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Tips: 
-"
-"    Config path:
-"       /etc/xdg/nvim/init.vim
-"       or locally with:
-"       ~/.config/nvim/init.vim 
-"    Quick command to link nvim & vim config files:
-"       ln -s ~/.vimrc /etc/xdg/nvim/init.vim
