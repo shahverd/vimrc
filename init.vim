@@ -31,7 +31,7 @@ function! UpdateConfigs()
     if has('win32')
 
         if has('nvim')
-            let b:scriptPath =  $HOME . '/AppData/Local/nvim/'   
+            let b:scriptPath =  $HOME . '\AppData\Local\nvim\'   
             let b:fileName = 'init.vim'
         else
             let b:scriptPath = $HOME . '/vimfiles/'
