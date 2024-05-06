@@ -47,7 +47,7 @@ function! UpdateConfigs()
             let b:fileName = 'vimrc'
         endif
     endif
-
+    echo 'mkdir -p '. b:scriptPath
     call system('mkdir -p '. b:scriptPath)
     let b:cmd = "curl " . g:path . " > " . b:scriptPath . b:fileName
     call system(b:cmd)
