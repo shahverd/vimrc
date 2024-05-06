@@ -20,6 +20,7 @@ set hidden " to be able to change buffers without saving them
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
+set guifont=Monaco:h14
 
 colorscheme darkblue
 
