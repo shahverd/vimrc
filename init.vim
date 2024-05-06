@@ -28,18 +28,22 @@ set guioptions-=r  "scrollbar
 set guifont=Monaco:h14
 
 """""""""""""""""""""""SESSION MANAGEMENT"""""""""""""""""""""""""""""""""""
-
-map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
-map <F3> :source ~/vim_session <cr>     " And load session with F3
+if has('nvim')
+    let b:sessionPath = '~/nvim_session'
+else
+    let b:sessionPath = '~/vim_session'
+endif
+map <F2> :mksession! b:sessionPath <cr> " Quick write session with F2
+map <F3> :source b:sessionPath <cr>     " And load session with F3
 
 function! RestoreSession()
-    if filereadable(expand("~/vim_session"))
-        source ~/vim_session
+    if filereadable(expand(b:sessionPath))
+        source b:sessionPath
     endif
 endfunction
 
 function! SaveSession()
-    mks! ~/vim_session
+    mks! b:sessionPath
 endfunction
 
 au VimEnter * call RestoreSession()
