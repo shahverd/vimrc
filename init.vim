@@ -6,6 +6,7 @@
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+colorscheme darkblue
 set number
 set nowrap
 set hlsearch incsearch " Highlight the searched string, while typing.
@@ -16,17 +17,19 @@ set noarabicshape "leave arabic shapes to terminal to IDE
 set clipboard=unnamedplus " p to paste globally
 set mouse=a
 set hidden " to be able to change buffers without saving them
+"For some systems these are disabled by default:
+syntax on
+filetype on
+
 
 set guioptions-=m  "menu bar
 set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set guifont=Monaco:h14
 
-colorscheme darkblue
+map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
+map <F3> :source ~/vim_session <cr>     " And load session with F3
 
-"For some systems these are disabled by default:
-syntax on
-filetype on
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 
