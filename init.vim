@@ -10,11 +10,11 @@ colorscheme darkblue
 set number
 set nowrap
 set hlsearch incsearch " Highlight the searched string, while typing.
-set nobackup noswapfile
+"set nobackup noswapfile
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set noarabicshape "leave arabic shapes to terminal to IDE
 "set scrolloff=300 " To make cursor stays in the middle of the screen
-set clipboard=unnamedplus " p to paste globally
+"set clipboard=unnamedplus " p to paste globally
 set mouse=a
 set hidden " to be able to change buffers without saving them
 "For some systems these are disabled by default:
@@ -27,9 +27,23 @@ set guioptions-=T  "toolbar
 set guioptions-=r  "scrollbar
 set guifont=Monaco:h14
 
+"""""""""""""""""""""""SESSION MANAGEMENT"""""""""""""""""""""""""""""""""""
+
 map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
 map <F3> :source ~/vim_session <cr>     " And load session with F3
 
+function! RestoreSession()
+    if filereadable(expand("~/vim_session"))
+        source ~/vim_session
+    endif
+endfunction
+
+function! SaveSession()
+    mks! ~/vim_session
+endfunction
+
+au VimEnter * call RestoreSession()
+au VimLeavePre * call SaveSession() 
 
 """""""""""""""""""""""""""UPDATEING SECTION"""""""""""""""""""""""""""""""
 
