@@ -34,7 +34,7 @@ function! UpdateConfigs()
             let b:scriptPath =  $HOME . '\AppData\Local\nvim\'   
             let b:fileName = 'init.vim'
         else
-            let b:scriptPath = $HOME . '/vimfiles/'
+            let b:scriptPath = $HOME . '\vimfiles\'
             let b:fileName = 'vimrc'
         endif
 
