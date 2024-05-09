@@ -20,6 +20,7 @@ set hidden " to be able to change buffers without saving them
 "For some systems these are disabled by default:
 syntax on
 filetype on
+let g:netrw_winsize = 25
 
 
 set guioptions-=m  "menu bar
