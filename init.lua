@@ -17,27 +17,7 @@ vim.g.netrw_browse_split = 4
 --vim.g.netrw_altv = 1
 
 -- Toggle Vexplore with <Leader>e
-vim.keymap.set('n', '<Leader>e', function()
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_get_option(buf, "filetype") == "netrw" then
-      -- If a netrw buffer exists, close it
-      vim.api.nvim_buf_delete(buf, { force = true })
-      return
-    end
-  end
-  -- Otherwise, open Vexplore
-  vim.cmd("Vexplore")
-end, { noremap = true, silent = true })
-
--- Show Vexplore instead of Explore for directory
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    local arg = vim.fn.argv(0)
-    if vim.fn.isdirectory(arg) == 1 then
-      vim.cmd("Vexplore")
-    end
-  end
-})
+vim.keymap.set('n', '<Leader>e', ":NvimTreeToggle<CR>")
 
 
 --------------------------PLUGINS-------------------------------
@@ -89,5 +69,31 @@ cmp.setup({
   -- Appearance and other settings
   completion = {
     keyword_length = 1, -- Start completion after 1 character
+  },
+})
+
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
   },
 })
