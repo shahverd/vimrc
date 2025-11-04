@@ -10,17 +10,10 @@ vim.g.netrw_liststyle = 3
 vim.cmd.colorscheme 'unokai'
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>e', function()
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_get_option(buf, 'filetype') == 'netrw' then
-      vim.cmd("Rex")
-      return 
-    end
-  end
-  vim.cmd("Explore")
-end)
+vim.keymap.set('n', '<leader>e', function() 
+  vim.cmd(vim.fn.exists(':Rexplore') == 1 and 'Rexplore' or 'Explore') end)
 
---------------------------PLUGINS-------------------------------
+--------------PLUGINS-------------
 -- Enable LSP for C
 vim.lsp.enable('clangd', { filetypes = { 'c', 'objc'}, })
 
