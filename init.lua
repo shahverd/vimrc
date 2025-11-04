@@ -18,9 +18,7 @@ vim.keymap.set('n', '<leader>e', function()
 vim.lsp.enable('clangd', { filetypes = { 'c', 'objc'}, })
 
 -- Enable better code completion
-require('cmp').setup({
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' }, 
-  },
-})
+require('cmp').setup({ sources = {
+  { name = 'nvim_lsp' },
+  { name = 'buffer' }, 
+}})
