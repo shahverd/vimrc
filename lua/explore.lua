@@ -5,7 +5,9 @@ vim.keymap.set('n', '<leader>e', function() vim.cmd(vim.fn.exists(':Rexplore') =
 -- After a short delay fix list style in netrw
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    vim.g.netrw_liststyle = 3
-    vim.g.netrw_browse_split = 0
+--     vim.defer_fn(function()
+      vim.g.netrw_liststyle = 3
+      vim.g.netrw_browse_split = 0
+--     end, 150) -- tweak ms if necessary
   end,
 })
