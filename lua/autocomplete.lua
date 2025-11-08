@@ -1,6 +1,5 @@
 -- Configure Autocomplete behavior
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { noremap = true })
-
 vim.o.completeopt = "menu,menuone,noselect"
 vim.o.pumheight = 10    -- limit menu height
 vim.o.pumblend = 10     -- slight transparency
@@ -26,7 +25,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         
         -- Trigger completion after typing letters, dots, or arrows
         if before_cursor:match('[%w_]$') or before_cursor:match('%.$') or before_cursor:match('->$') then
-          -- Check if completion menu is not already visible
           if vim.fn.pumvisible() == 0 then
             vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-x><C-o>', true, false, true), 'n')
           end
@@ -34,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       end,
     })
     
-    -- Auto-show signature help when typing parameters
+    -- Auto-show signature help with proper configuration
     vim.api.nvim_create_autocmd({'TextChangedI', 'TextChangedP'}, {
       buffer = bufnr,
       callback = function()
@@ -44,10 +42,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         
         -- Show signature help when inside function parentheses
         if before_cursor:match('%(') or before_cursor:match(',') then
-          vim.lsp.buf.signature_help()
+          -- Use pcall to prevent errors and configure to not focus
+          pcall(vim.lsp.buf.signature_help, { focusable = false })
         end
       end,
     })
   end,
 })
-
