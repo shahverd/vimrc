@@ -17,6 +17,16 @@ local gdb = require("gdb")
 
 --================KEYMAPS=================--
 
+-- Window movement in normal mode
+vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
+
+-- Make terminal esc act like normal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true }) 
+vim.keymap.set('n', '<leader>t',  ":vsplit | terminal<CR>")
+
 vim.keymap.set('n', 'gd',         vim.lsp.buf.definition)
 vim.keymap.set('n', '[d',         vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d',         vim.diagnostic.goto_next)
