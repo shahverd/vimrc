@@ -11,3 +11,15 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+
+-- Enable inline diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 2,
+    prefix = "●",
+  },
+  update_in_insert = false, 
+  underline = true,
+  signs = true,
+})
