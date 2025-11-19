@@ -8,6 +8,15 @@ vim.opt.expandtab = true
 vim.opt.signcolumn = 'yes:1'
 vim.cmd.colorscheme 'unokai'
 
+
+-- Swap / and \ for my keyboard
+vim.keymap.set({'n','x','o'}, '/', '\\')
+vim.keymap.set({'n','x','o'}, '\\', '/')
+vim.keymap.set('i', '/', '\\')
+vim.keymap.set('i', '\\', '/')
+vim.keymap.set('c', '/', '\\')
+vim.keymap.set('c', '\\', '/')
+
 --================PLUGINS=================--
 
 require("explore")
