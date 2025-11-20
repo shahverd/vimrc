@@ -32,12 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       end,
     })
 
-
-
-
-
-
-
     vim.api.nvim_create_autocmd({'TextChangedI', 'TextChangedP'}, {
       buffer = bufnr,
       callback = function()
@@ -65,22 +59,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
               local new_line = line:sub(1, start_col) .. parens .. line:sub(col + 1) .. ')'
               vim.api.nvim_set_current_line(new_line)
 
-              -- Move cursor to the end of inserted params and leave insert mode
-              -- vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1], start_col + #parens })
               vim.cmd('stopinsert')
-
-              vim.cmd('normal! vf,')
-
+              vim.cmd('normal! vf,') -- select first parameter
 
             end
           end)
         end
       end,
     })
-
-
-
-
 
     -- Auto-show signature help with proper configuration
     vim.api.nvim_create_autocmd({'TextChangedI', 'TextChangedP'}, {
@@ -97,8 +83,62 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
       end,
     })
-
-
-
   end,
 })
+
+
+-------keymap for autocomplete accept suggestion---------
+vim.keymap.set('i', '<CR>',  function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-y>"
+  else
+    return "<CR>"
+  end
+end,{expr = true, noremap = true})
+
+vim.keymap.set('i', '<Tab>',  function()
+  if vim.fn.pumvisible() == 1 then
+    return "<C-n>"
+  else
+    return "<Tab>"
+  end
+end,{expr = true, noremap = true})
+------------keymap for arguments hopping----------------
+local function select_current_arg()
+  local start = vim.fn.search(",\\|(", "cbW", vim.fn.line('.'))
+  if start == 0 then return end
+  vim.cmd("normal! l")
+  vim.cmd("normal! v")
+
+  local finish = vim.fn.search(",\\|)", "cW")
+  if finish == 0 then return end
+  vim.cmd("normal! h")
+end
+
+vim.keymap.set("n", "<Tab>", select_current_arg)
+vim.keymap.set("n", "<S-Tab>", function()
+  local start_prev = vim.fn.search(",\\|(", "cbW", vim.fn.line('.'))
+  if start_prev == 0 then return end
+
+  vim.cmd("normal! h")
+
+  select_current_arg()
+end)
+
+vim.keymap.set("v", "<Tab>", function()
+  vim.cmd("normal! l")
+  vim.cmd("normal! v") -- exit visual
+
+  select_current_arg()
+end, { noremap = true })
+
+vim.keymap.set("v", "<S-Tab>", function()
+  local start = vim.fn.search(",\\|(", "cbW", vim.fn.line('.'))
+  if start == 0 then return end
+
+  vim.cmd("normal! h")
+  vim.cmd("normal! v") -- exit visual
+
+  select_current_arg()
+end, { noremap = true })
+----------------------------------------------
