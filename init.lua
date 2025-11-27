@@ -6,18 +6,23 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.signcolumn = 'yes:1'
-vim.cmd.colorscheme 'delek'
+vim.cmd.colorscheme 'unokai'
+-- vim.cmd.colorscheme 'delek'
 
 --================PLUGINS=================--
 
-require("explore")
-require("lsp")
+require("file_explorer")
+require("lsp_settings")
 require("autocomplete")
-local gdb = require("gdb")
+require("argument_hopping")
+local gdb = require("debug_gdb")
 
 --================KEYMAPS=================--
+-- Make terminal esc act like normal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true }) 
+vim.keymap.set('n', '<leader>t',  ":vsplit | terminal<CR>")
 
--- Swap / and \ for my keyboard
+-- Swap / and \ for my personal keyboard
 vim.keymap.set({'n','x','o'}, '/', '\\')
 vim.keymap.set({'n','x','o'}, '\\', '/')
 vim.keymap.set('i', '/', '\\')
@@ -31,18 +36,8 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
 
-vim.keymap.set('n', 'gd',         vim.lsp.buf.definition)
-vim.keymap.set('n', '[d',         vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d',         vim.diagnostic.goto_next)
 
-vim.keymap.set('n', '<leader>k',  vim.lsp.buf.hover)
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+vim.keymap.set( 'n', '<leader>dc', ":lua gdb.start('./build/MyProject')<CR>", {noremap=true, silent=true})
+vim.keymap.set( 'n', '<leader>dq', ":lua gdb.stop()<CR>", {noremap=true, silent=true})
+vim.keymap.set( 'n', '<leader>db', ":lua gdb.toggle_breakpoint()<CR>", {noremap=true, silent=true})
 
-vim.keymap.set( 'n', '<leader>dc', ":lua require('gdb').start('./build/MyProject')<CR>", {noremap=true, silent=true})
-vim.keymap.set( 'n', '<leader>dq', ":lua require('gdb').stop()<CR>", {noremap=true, silent=true})
-vim.keymap.set( 'n', '<leader>db', ":lua require('gdb').toggle_breakpoint()<CR>", {noremap=true, silent=true})
-
--- Make terminal esc act like normal
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true }) 
-vim.keymap.set('n', '<leader>t',  ":vsplit | terminal<CR>")
