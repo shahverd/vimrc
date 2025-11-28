@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 
 vim.opt.number = true
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevelstart = 99
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
