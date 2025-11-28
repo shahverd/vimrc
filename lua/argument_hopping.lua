@@ -36,5 +36,4 @@ vim.keymap.set("v", "<S-Tab>", function()
 
   select_current_arg()
 end, { noremap = true })
-----------------------------------------------
 

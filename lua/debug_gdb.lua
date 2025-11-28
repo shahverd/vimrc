@@ -1,9 +1,10 @@
 -- debug.lua - GDB integration for Neovim
-
+vim.keymap.set( 'n', '<leader>dc', ":lua gdb_start('./build/MyProject')<CR>", {noremap=true, silent=true})
+vim.keymap.set( 'n', '<leader>dq', ":lua gdb_stop()<CR>", {noremap=true, silent=true})
+vim.keymap.set( 'n', '<leader>db', ":lua gdb_toggle_breakpoint()<CR>", {noremap=true, silent=true})
+-------------------------------------------------------------------------------------
 -- Sign definition for breakpoint
 vim.fn.sign_define('GdbBreakpoint', {text='B', texthl='Error', linehl='', numhl=''})
-
-local M = {}
 
 -- Sign definition for breakpoint
 vim.fn.sign_define('GdbBreakpoint', {text='B', texthl='Error', linehl='', numhl=''})
@@ -12,7 +13,7 @@ vim.fn.sign_define('GdbBreakpoint', {text='B', texthl='Error', linehl='', numhl=
 local breakpoints = {}
 
 -- Start GDB in a terminal split
-function M.start(program)
+function gdb_start(program)
   if vim.g.gdb_term == nil then
     vim.cmd("vsplit | terminal gdb " .. program)
     vim.g.gdb_term = vim.b.terminal_job_id
@@ -23,7 +24,7 @@ function M.start(program)
 end
 
 -- Stop GDB properly
-function M.stop()
+function gdb_stop()
   if vim.g.gdb_term then
     -- Send quit command to GDB
     vim.api.nvim_chan_send(vim.g.gdb_term, "quit\n")
@@ -45,7 +46,7 @@ local function send_to_gdb(cmd)
 end
 
 -- Toggle breakpoint
-function M.toggle_breakpoint()
+function gdb_toggle_breakpoint()
   local bufnr = vim.api.nvim_get_current_buf()
   local lnum = vim.fn.line('.')
   local file = vim.fn.fnamemodify(vim.fn.expand('%:p'), ':.') -- relative to cwd
@@ -65,5 +66,3 @@ function M.toggle_breakpoint()
     print("Breakpoint set at " .. file .. ":" .. lnum)
   end
 end
-
-return M

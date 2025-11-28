@@ -1,4 +1,3 @@
-
 -- Setting for better use of netrw
 vim.keymap.set('n', '<leader>e', function() vim.cmd(vim.fn.exists(':Rexplore') == 1 and 'Rexplore' or 'Explore') end)
 

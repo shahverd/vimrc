@@ -15,7 +15,7 @@ require("file_explorer")
 require("lsp_settings")
 require("autocomplete")
 require("argument_hopping")
-local gdb = require("debug_gdb")
+require("debug_gdb")
 
 --================KEYMAPS=================--
 -- Make terminal esc act like normal
@@ -35,9 +35,3 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
-
-
-vim.keymap.set( 'n', '<leader>dc', ":lua gdb.start('./build/MyProject')<CR>", {noremap=true, silent=true})
-vim.keymap.set( 'n', '<leader>dq', ":lua gdb.stop()<CR>", {noremap=true, silent=true})
-vim.keymap.set( 'n', '<leader>db', ":lua gdb.toggle_breakpoint()<CR>", {noremap=true, silent=true})
-
