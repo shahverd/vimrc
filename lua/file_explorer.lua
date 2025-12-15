@@ -10,3 +10,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 --     end, 350) -- tweak ms if necessary
   end,
 })
+
+-- require("oil").setup()
+-- vim.keymap.set("n", "-", "<cmd>Oil<cr>")

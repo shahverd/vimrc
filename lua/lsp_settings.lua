@@ -1,5 +1,6 @@
--- Enable LSP for C
+-- LSP settings
 -- You need to have clangd binary on your system
+-- You need to have rust-analyzer on your system
 -----------------------------------------------------------
 vim.keymap.set('n', 'gd',         vim.lsp.buf.definition)
 vim.keymap.set('n', '[d',         vim.diagnostic.goto_prev)
@@ -12,12 +13,26 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', 'K',          vim.lsp.buf.hover)
 vim.keymap.set('n', 'gr',         vim.lsp.buf.references)
 -----------------------------------------------------------
+-- C/C++
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp" },
   callback = function()
     vim.lsp.start({
       name = "clangd",
       cmd = { "clangd" },
+      root_dir = vim.fn.getcwd(),
+    })
+  end,
+})
+
+
+-- Rust
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "rust" },
+  callback = function()
+    vim.lsp.start({
+      name = "rust-analyzer",
+      cmd = { "rust-analyzer" },
       root_dir = vim.fn.getcwd(),
     })
   end,
